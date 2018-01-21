@@ -86,7 +86,7 @@ This would show the following dialog:
 
 If your conversation shows backwards you cann use a component attribute called "reverse" and set it to "true. **Example**:
 
-```
+```html
 <watson-conversation-ui [conversation]="myConversation" [reverse]="true"></watson-conversation-ui>
 ```
 
