@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'watson-conversation-ui',
@@ -22,6 +22,9 @@ export class WatsonConversationUiComponent implements OnInit {
   private _reverse: boolean = false;
 
 
+  @Input('details')
+  details: boolean = true;
+
   @Input('reverse')
   set reverse(reverse) {
     this.updateComponentInitialization(this._originalConversation, this._config, reverse);
@@ -43,6 +46,9 @@ export class WatsonConversationUiComponent implements OnInit {
 
   private _fields: any[] = [];
   private _hiddenFields: any[] = [];
+
+  @ViewChild('containerDiv')
+  private el: ElementRef;
 
   constructor() { }
 
@@ -111,12 +117,14 @@ export class WatsonConversationUiComponent implements OnInit {
         });
       }
 
-      this._fields = Object.keys(this._conversation[0]).filter((field) => {
+      if (this.details) {
 
-        return this._hiddenFields.indexOf(field) === -1;
+        this._fields = Object.keys(this._conversation[0]).filter((field) => {
 
-      }).sort();
+          return this._hiddenFields.indexOf(field) === -1;
+
+        }).sort();
+      }
     }
   }
-
 }

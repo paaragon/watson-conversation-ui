@@ -4,7 +4,7 @@
 
 <div class="container-fluid" *ngIf="_conversation.length > 0">
   <div class="row">
-    <div class="col-sm-6">
+    <div [ngClass]="{'col-sm-6': details}">
       <h3>Conversation</h3>
       <small>
         <div class="alert alert-info">
@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-sm-6">
+    <div [ngClass]="{'col-sm-6': details}" *ngIf="details">
       <h3>Details</h3>
       <small *ngIf="!_selectedIteration">
         <div class="alert alert-warning">There is no selected iteration.</div>
