@@ -84,16 +84,19 @@ This would show the following dialog:
 
 ![Dialog example](./readme-assets/conversation-example.png "Dialog example")
 
-<div class="alert alert-success">
-Woops! Conversation is backwards. Don't worry, we can fix it with the **config** object
-</div>
+If your conversation shows backwards you cann use a component attribute called "reverse" and set it to "true. **Example**:
 
+```
+<watson-conversation-ui [conversation]="myConversation" [reverse]="true"></watson-conversation-ui>
+```
 
 ### Conversation details
 
 We use to store a lot of information about conversations but to visualize them only a few are relevant. So, this component allows you to hide some attributes of the conversation by unchecking them in the details list.
 
 To show them again you only have to check them in the "hidden fields" tab.
+
+![Details example](./readme-assets/details-example.png "Details example")
 
 ### Configuration
 
