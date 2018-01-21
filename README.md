@@ -102,14 +102,23 @@ To show them again you only have to check them in the "hidden fields" tab.
 
 By **default**, this component assumes the input field is called *"INPUT"*, the output field *"OUTPUT"* and the field that identifies each iteration of the conversation *"_ID"*.
 
+```typescript
+// Default configuration object
+{
+    iterationid: '_ID',
+    input: 'INPUT',
+    output: 'OUTPUT'
+}
+```
+
 If we have different fields to identify these properties, we can use a configuration object and pass it to the component.
 
 ```typescript
 // app.component.ts
 const config: {
-    iterationid: string,
-    input: string,
-    output: string
+    iterationid?: string,
+    input?: string,
+    output?: string
   } = {
       iterationid: 'id',
       input: 'userinputfield',
@@ -124,19 +133,19 @@ It may be that some of the attributes of the conversation need to be processed b
 ```typescript
 // app.component.ts
 const config: {
-    iterationid: string,
-    input: string,
-    output: string,
+    iterationid?: string,
+    input?: string,
+    output?: string,
     map?: any
   } = {
-      iterationid: 'id',
-      input: 'userinputfield',
-      output: 'watsonoutputfield',
+      iterationid: '_ID',
+      input: 'INPUT',
+      output: 'OUTPUT',
       map: {
-          confidence: (item) => {
+          CONFIDENCE: (item) => {
               return item.toFixed(2);
           },
-          userinputfield: (item) => {
+          INPUT: (item) => {
               return item.toUppercase();
           }
       }

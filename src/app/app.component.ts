@@ -11,14 +11,13 @@ export class AppComponent {
 
   conversation = fakeConversation;
   config: {
-    iterationid: string,
-    input: string,
-    output: string,
+    iterationid?: string,
+    input?: string,
+    output?: string,
     map?: any
   } = {
       iterationid: '_ID',
       input: 'INPUT',
-      output: 'OUTPUT',
       map: {
         CONFIDENCE: (item) => {
           return parseFloat(item).toFixed(2);

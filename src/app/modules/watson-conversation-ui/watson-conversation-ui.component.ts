@@ -10,9 +10,9 @@ export class WatsonConversationUiComponent implements OnInit {
   private _conversation: any[] = [];
   private _originalConversation: any[] = [];
   private _config: {
-    iterationid: string,
-    input: string,
-    output: string,
+    iterationid?: string,
+    input?: string,
+    output?: string,
     map?: any
   } = {
       iterationid: '_ID',
@@ -93,7 +93,7 @@ export class WatsonConversationUiComponent implements OnInit {
       this._conversation = this._originalConversation;
     }
 
-    this._config = config;
+    Object.assign(this._config, config);
 
     this._hiddenFields = JSON.parse(localStorage.getItem('hiddenFields')) || [];
 
