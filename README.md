@@ -2,6 +2,8 @@
 
 This project provides an angular component to visualize conversations generated with Watson Conversation and the details of each element of the conversation.
 
+![Component preview](./readme-assets/component-preview.png "Component preview")
+
 ## Installation
 
 ```
