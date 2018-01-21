@@ -18,6 +18,14 @@ export class AppComponent {
   } = {
       iterationid: '_ID',
       input: 'INPUT',
-      output: 'OUTPUT'
+      output: 'OUTPUT',
+      map: {
+        CONFIDENCE: (item) => {
+          return parseFloat(item).toFixed(2);
+        },
+        INPUT: (item) => {
+          return item.toUpperCase();
+        }
+      }
     }
 }

@@ -100,7 +100,7 @@ To show them again you only have to check them in the "hidden fields" tab.
 
 ### Configuration
 
-By **default**, this component assumes the input field is called *"INPUT"*, the output field *"OUTPUT"* and the field and the field that identifies each iteration of the conversation *"_ID"*.
+By **default**, this component assumes the input field is called *"INPUT"*, the output field *"OUTPUT"* and the field that identifies each iteration of the conversation *"_ID"*.
 
 If we have different fields to identify these properties, we can use a configuration object and pass it to the component.
 

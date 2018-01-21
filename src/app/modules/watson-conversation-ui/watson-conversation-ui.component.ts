@@ -8,31 +8,35 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WatsonConversationUiComponent implements OnInit {
 
   private _conversation: any[] = [];
+  private _originalConversation: any[] = [];
+  private _config: {
+    iterationid: string,
+    input: string,
+    output: string,
+    map?: any
+  } = {
+      iterationid: '_ID',
+      input: 'INPUT',
+      output: 'OUTPUT'
+    };
+  private _reverse: boolean = false;
+
 
   @Input('reverse')
-  reverse: boolean = false;
+  set reverse(reverse) {
+    this.updateComponentInitialization(this._originalConversation, this._config, reverse);
+  }
 
   @Input('conversation')
   set conversation(conversation) {
 
-    if(this.reverse){
+    this.updateComponentInitialization(conversation, this._config, this._reverse);
+  }
 
-      this._conversation = conversation.reverse();
-    }else{
-      
-      this._conversation = conversation;
-    }
+  @Input('config')
+  set config(config) {
 
-    this._hiddenFields = JSON.parse(localStorage.getItem('hiddenFields')) || [];
-
-    if (this._conversation.length > 0) {
-
-      this._fields = Object.keys(this._conversation[0]).filter((field) => {
-
-        return this._hiddenFields.indexOf(field) === -1;
-
-      }).sort();
-    }
+    this.updateComponentInitialization(this._originalConversation, config, this._reverse);
   }
 
   private _selectedIteration: any;
@@ -40,20 +44,10 @@ export class WatsonConversationUiComponent implements OnInit {
   private _fields: any[] = [];
   private _hiddenFields: any[] = [];
 
-  @Input('config')
-  public config: {
-    iterationid: string,
-    input: string,
-    output: string
-  } = {
-      iterationid: '_ID',
-      input: 'INPUT',
-      output: 'OUTPUT'
-    }
-
   constructor() { }
 
   ngOnInit() {
+    this.updateComponentInitialization(this._conversation, this._config, this._reverse);
   }
 
   viewIterationDetails(iteration) {
@@ -61,7 +55,7 @@ export class WatsonConversationUiComponent implements OnInit {
   }
 
   isSelectedIteration(id: string) {
-    return this._selectedIteration && id === this._selectedIteration[this.config.iterationid];
+    return this._selectedIteration && id === this._selectedIteration[this._config.iterationid];
   }
 
   hideField(field) {
@@ -71,8 +65,6 @@ export class WatsonConversationUiComponent implements OnInit {
 
     this._hiddenFields.push(field);
     this._hiddenFields.sort();
-
-    console.log(this._hiddenFields);
 
     localStorage.setItem('hiddenFields', JSON.stringify(this._hiddenFields));
   }
@@ -86,6 +78,45 @@ export class WatsonConversationUiComponent implements OnInit {
     this._fields.sort();
 
     localStorage.setItem('hiddenFields', JSON.stringify(this._hiddenFields));
+  }
+
+  updateComponentInitialization(conversation, config, reverse) {
+
+    this._reverse = reverse;
+    this._originalConversation = conversation;
+
+    if (this._reverse) {
+
+      this._conversation = this._originalConversation.reverse();
+    } else {
+
+      this._conversation = this._originalConversation;
+    }
+
+    this._config = config;
+
+    this._hiddenFields = JSON.parse(localStorage.getItem('hiddenFields')) || [];
+
+    if (this._conversation.length > 0) {
+
+      if (this._config && this._config.map) {
+
+        this._conversation = this._conversation.map((iteration) => {
+
+          Object.keys(this._config.map).forEach(item => {
+
+            iteration[item] = this._config.map[item](iteration[item]);
+          });
+          return iteration;
+        });
+      }
+
+      this._fields = Object.keys(this._conversation[0]).filter((field) => {
+
+        return this._hiddenFields.indexOf(field) === -1;
+
+      }).sort();
+    }
   }
 
 }

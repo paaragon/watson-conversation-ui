@@ -4,7 +4,7 @@
 
 <div class="container-fluid" *ngIf="_conversation.length > 0">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm-6">
       <h3>Conversation</h3>
       <small>
         <div class="alert alert-info">
@@ -12,12 +12,12 @@
         </div>
       </small>
       <ul class="conversation">
-        <li *ngFor="let iteration of _conversation" class="iteration" [ngClass]="{active: isSelectedIteration(iteration[config.iterationid])}"
+        <li *ngFor="let iteration of _conversation" class="iteration" [ngClass]="{active: isSelectedIteration(iteration[_config.iterationid])}"
           title="Click to view iteration details" (click)="viewIterationDetails(iteration)">
-          <div class="input">{{ iteration[config.input] }}</div>
+          <div class="input">{{ iteration[_config.input] }}</div>
           <div class="watson">
             <div>
-              <div [innerHTML]="iteration[config.output]">
+              <div [innerHTML]="iteration[_config.output]">
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-6">
       <h3>Details</h3>
       <small *ngIf="!_selectedIteration">
         <div class="alert alert-warning">There is no selected iteration.</div>

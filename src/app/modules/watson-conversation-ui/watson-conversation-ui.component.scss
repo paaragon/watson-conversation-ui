@@ -3,11 +3,11 @@ $primary: #047cc0;
 ul.conversation {
     list-style: none;
     padding: 0;
-    .iteracion {
+    .iteration {
         padding: 5px;
         cursor: pointer;
         &:hover {
-            background-color: #eeeeee;
+            background-color: #f3f3f3;
         }
     }
     .input {
