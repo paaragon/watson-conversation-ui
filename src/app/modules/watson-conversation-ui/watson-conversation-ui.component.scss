@@ -1,0 +1,89 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+$primary: #047cc0;
+ul.conversation {
+    list-style: none;
+    padding: 0;
+    .iteracion {
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: #eeeeee;
+        }
+    }
+    .input {
+        max-width: 85%;
+        min-width: -20%;
+        padding-right: 4px;
+        margin-right: 5px;
+        background: $primary;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        color: #fff;
+        float: right;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 0.3125rem;
+        transition-property: opacity, margin-top;
+        transition-duration: 0.75s;
+        transition-timing-function: ease-in;
+        font-weight: normal;
+        line-height: 1em;
+        width: 100%;
+        padding: 1.4120rem;
+    }
+    .watson {
+        display: inline-block;
+        width: 96%;
+        margin-bottom: 4px;
+        div {
+            display: block;
+            padding-left: 32px;
+            background-image: url(./assets/watson-icon.png);
+            background-size: 3.2rem;
+            background-repeat: no-repeat;
+            background-position: 0px 7px;
+            float: left;
+            div {
+                display: block;
+                margin: 1rem 0 1rem 1rem;
+                background: #eaeaea;
+                border-radius: .3rem;
+                font-size: 13px;
+                text-align: left;
+                line-height: 3.313rem;
+                color: #6d6d6d;
+                float: left;
+                padding: 25px;
+            }
+        }
+    }
+}
+
+ul.details {
+    list-style: none;
+    padding: 0;
+    mat-checkbox /deep/ {
+        .mat-checkbox-layout {
+            .mat-checkbox-inner-container {
+                margin: inherit;
+                margin-right: 8px;
+            }
+            white-space: inherit;
+            align-items: flex-start;
+        }
+    }
+}
+
+mat-tab-group /deep/ {
+    mat-tab-body {
+        margin-top: 15px;
+    }
+}
+
+mat-checkbox /deep/ {
+    &.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    &.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: $primary;
+    }
+}

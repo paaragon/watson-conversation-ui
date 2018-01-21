@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { fakeConversation } from './modules/fakedata/conversation';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  conversation = fakeConversation;
+  config: {
+    iterationid: string,
+    input: string,
+    output: string,
+    map?: any
+  } = {
+      iterationid: '_ID',
+      input: 'INPUT',
+      output: 'OUTPUT'
+    }
 }
