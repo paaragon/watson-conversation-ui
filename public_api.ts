@@ -1,0 +1,1 @@
+export * from './src/app/modules/watson-conversation-ui/watson-conversation-ui.module'

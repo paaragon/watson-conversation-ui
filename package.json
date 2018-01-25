@@ -1,16 +1,35 @@
 {
   "name": "watson-conversation-ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
+  "description": "Angular component to visualize conversations generated with Watson Conversation and the details of each element of the conversation",
+  "homepage": "https://github.com/paaragon/watson-conversation-ui",
+  "author": {
+    "name": "Pablo Aragon Moreno",
+    "email": "pablo.aragon22@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paaragon/watson-conversation-ui"
+  },
+  "keywords": [
+    "watson",
+    "watson-conversation",
+    "angular",
+    "angular5",
+    "reusable",
+    "component"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^5.2.1",
     "@angular/cdk": "^5.1.0",
@@ -44,6 +63,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^1.6.0",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
